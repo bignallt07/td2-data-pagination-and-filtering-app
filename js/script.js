@@ -102,8 +102,8 @@ function addPagination(list) {
    ONLY IF there is more than one character entered
    */
    if (list.length > 0) {
-      let liList = ulPagination.firstElementChild;
-      let firstButton = liList.firstElementChild;
+      let firstLi = ulPagination.firstElementChild;
+      let firstButton = firstLi.firstElementChild;
       firstButton.className = "active";
    } else {
       ulOfStudents.innerHTML = "<h1 class='no-results'>No Results to Display</h1>";
@@ -113,9 +113,10 @@ function addPagination(list) {
    ulPagination.addEventListener("click", (e) => {
       if (e.target.tagName === "BUTTON") {
          let clickedButton = e.target;
-         for (let i = 0; i < numOfButtons; i++) {
+         let buttonList = ulPagination.children;
+         for (let i = 0; i < buttonList.length; i++) {
             let button = ulPagination.children[i].firstElementChild;
-            button.classList.remove("active")
+            button.classList.remove("active");
          }
          clickedButton.className = "active";
 
